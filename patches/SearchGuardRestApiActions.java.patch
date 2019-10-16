@@ -1,0 +1,9 @@
+diff --git a/src/main/java/com/floragunn/searchguard/dlic/rest/api/OpenDistroSecurityRestApiActions.java b/src/main/java/com/floragunn/searchguard/dlic/rest/api/OpenDistroSecurityRestApiActions.java
+index a3f6fc46..2de02144 100644
+--- a/src/main/java/com/floragunn/searchguard/dlic/rest/api/OpenDistroSecurityRestApiActions.java
++++ b/src/main/java/com/floragunn/searchguard/dlic/rest/api/OpenDistroSecurityRestApiActions.java
+@@ -50,2 +50,4 @@ public class OpenDistroSecurityRestApiActions {
+ 	    handlers.add(new TenantsApiAction(settings, configPath, controller, client, adminDns, cr, cs, principalExtractor, evaluator, threadPool, auditLog));
++	    handlers.add(new MigrateApiAction(settings, configPath, controller, client, adminDns, cr, cs, principalExtractor, evaluator, threadPool, auditLog));
++	    handlers.add(new ValidateApiAction(settings, configPath, controller, client, adminDns, cr, cs, principalExtractor, evaluator, threadPool, auditLog));
+ 	    return Collections.unmodifiableCollection(handlers);

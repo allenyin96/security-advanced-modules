@@ -1,0 +1,11 @@
+diff --git a/src/main/java/com/floragunn/searchguard/dlic/rest/validation/AbstractConfigurationValidator.java b/src/main/java/com/floragunn/searchguard/dlic/rest/validation/AbstractConfigurationValidator.java
+index 3d1ea8d0..82d080e4 100644
+--- a/src/main/java/com/floragunn/searchguard/dlic/rest/validation/AbstractConfigurationValidator.java
++++ b/src/main/java/com/floragunn/searchguard/dlic/rest/validation/AbstractConfigurationValidator.java
+@@ -124,2 +124,6 @@ public abstract class AbstractConfigurationValidator {
+         
++        if(!this.payloadMandatory && content.length() == 0) {
++            return true;
++        }
++        
+         if(this.payloadMandatory && content.length() > 0) {
