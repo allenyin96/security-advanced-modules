@@ -1,0 +1,30 @@
+diff --git a/src/main/java/com/floragunn/searchguard/dlic/rest/api/AbstractApiAction.java b/src/main/java/com/floragunn/searchguard/dlic/rest/api/AbstractApiAction.java
+index 6059888d..717bba7c 100644
+--- a/src/main/java/com/floragunn/searchguard/dlic/rest/api/AbstractApiAction.java
++++ b/src/main/java/com/floragunn/searchguard/dlic/rest/api/AbstractApiAction.java
+@@ -25,2 +25,3 @@ import org.elasticsearch.ExceptionsHelper;
+ import org.elasticsearch.action.ActionListener;
++import org.elasticsearch.action.bulk.BulkResponse;
+ import org.elasticsearch.action.index.IndexRequest;
+@@ -31,2 +32,3 @@ import org.elasticsearch.client.node.NodeClient;
+ import org.elasticsearch.cluster.service.ClusterService;
++import org.elasticsearch.common.Strings;
+ import org.elasticsearch.common.bytes.BytesReference;
+@@ -79,3 +81,3 @@ public abstract class AbstractApiAction extends BaseRestHandler {
+ 	final ThreadPool threadPool;
+-	private String opendistro_securityIndex;
++	protected String opendistro_securityIndex;
+ 	private final RestApiPrivilegesEvaluator restApiPrivilegesEvaluator;
+@@ -256,2 +258,7 @@ public abstract class AbstractApiAction extends BaseRestHandler {
+ 	
++	protected final SecurityDynamicConfiguration<?> loadAndDoNotValidate(final CType config, boolean logComplianceEvent) {
++        SecurityDynamicConfiguration<?> loaded = cl.getConfigurationsFromIndex(Collections.singleton(config), logComplianceEvent, true).get(config).deepClone();
++        return DynamicConfigFactory.addStatics(loaded);
++    }
++
+ 	protected boolean ensureIndexExists() {
+@@ -305,3 +312,3 @@ public abstract class AbstractApiAction extends BaseRestHandler {
+ 	
+-	private static class ConfigUpdatingActionListener<Response> implements ActionListener<Response>{
++	protected static class ConfigUpdatingActionListener<Response> implements ActionListener<Response>{
+ 

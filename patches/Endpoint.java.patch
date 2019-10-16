@@ -1,0 +1,11 @@
+diff --git a/src/main/java/com/floragunn/searchguard/dlic/rest/api/Endpoint.java b/src/main/java/com/floragunn/searchguard/dlic/rest/api/Endpoint.java
+index 237ab634..a02e4aee 100644
+--- a/src/main/java/com/floragunn/searchguard/dlic/rest/api/Endpoint.java
++++ b/src/main/java/com/floragunn/searchguard/dlic/rest/api/Endpoint.java
+@@ -26,3 +26,5 @@ public enum Endpoint {
+ 	AUTHTOKEN,
+-	TENANTS;
++	TENANTS,
++	MIGRATE,
++	VALIDATE;
+ }
