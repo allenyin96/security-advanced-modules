@@ -17,7 +17,7 @@ import com.amazon.opendistroforelasticsearch.security.test.helper.rest.RestHelpe
 public class MigrationTests extends SingleClusterTest {
 
     @Test
-    public void testSgMigrate() throws Exception {
+    public void testSecurityMigrate() throws Exception {
         final Settings settings = Settings.builder().put(SSLConfigConstants.OPENDISTRO_SECURITY_SSL_HTTP_CLIENTAUTH_MODE, "REQUIRE")
                 .put("opendistro_security.ssl.http.enabled", true)
                 .put("opendistro_security.ssl.http.keystore_filepath", FileHelper.getAbsoluteFilePathFromClassPath("node-0-keystore.jks"))
@@ -45,7 +45,7 @@ public class MigrationTests extends SingleClusterTest {
     }
 
     @Test
-    public void testSgValidate() throws Exception {
+    public void testSecurityValidate() throws Exception {
         final Settings settings = Settings.builder().put(SSLConfigConstants.OPENDISTRO_SECURITY_SSL_HTTP_CLIENTAUTH_MODE, "REQUIRE")
                 .put("opendistro_security.ssl.http.enabled", true)
                 .put("opendistro_security.ssl.http.keystore_filepath", FileHelper.getAbsoluteFilePathFromClassPath("node-0-keystore.jks"))
@@ -66,7 +66,7 @@ public class MigrationTests extends SingleClusterTest {
 
     @Override
     protected String getType() {
-        return "sg";
+        return "security";
     }
 
     @Override
